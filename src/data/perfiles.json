@@ -1,0 +1,44 @@
+[
+  {
+    "id": "dev-web",
+    "nombre": "Desarrollador Web",
+    "icono": "💻",
+    "descripcion": "Desarrollo de aplicaciones y sitios web",
+    "cursos": ["PROG101", "PROG202", "BD101", "WEB301"]
+  },
+  {
+    "id": "soporte-tecnico",
+    "nombre": "Soporte Técnico",
+    "icono": "🔧",
+    "descripcion": "Asistencia técnica y mantenimiento de sistemas",
+    "cursos": ["REDES101", "SO101", "HARD101"]
+  },
+  {
+    "id": "analista-datos",
+    "nombre": "Analista de Datos",
+    "icono": "📊",
+    "descripcion": "Análisis e interpretación de datos empresariales",
+    "cursos": ["BD101", "BD202", "EST101", "PROG101"]
+  },
+  {
+    "id": "admin-redes",
+    "nombre": "Administrador de Redes",
+    "icono": "🌐",
+    "descripcion": "Gestión y administración de infraestructura de red",
+    "cursos": ["REDES101", "REDES202", "SO101", "SEG101"]
+  },
+  {
+    "id": "dev-software",
+    "nombre": "Desarrollador de Software",
+    "icono": "⚙️",
+    "descripcion": "Desarrollo de aplicaciones de escritorio y móviles",
+    "cursos": ["PROG101", "PROG202", "PROG303", "BD101", "ALG101"]
+  },
+  {
+    "id": "ciberseguridad",
+    "nombre": "Especialista en Ciberseguridad",
+    "icono": "🔒",
+    "descripcion": "Protección de sistemas e infraestructura digital",
+    "cursos": ["SEG101", "REDES101", "REDES202", "SO101"]
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "pepsi",
+    "nombre": "PepsiCo Guatemala",
+    "logo": "/logos/pepsi.png",
+    "color": "#004B93",
+    "colorSecundario": "#E31837"
+  },
+  {
+    "id": "cocacola",
+    "nombre": "Coca-Cola FEMSA",
+    "logo": "/logos/cocacola1.png",
+    "color": "#F40009",
+    "colorSecundario": "#000000"
+  },
+  {
+    "id": "cerveceria",
+    "nombre": "Cervecería Centroamericana",
+    "logo": "/logos/cerveceria.png",
+    "color": "#FFD700",
+    "colorSecundario": "#1a1a1a"
+  },
+  {
+    "id": "tigo",
+    "nombre": "Tigo Guatemala",
+    "logo": "/logos/tigo.png",
+    "color": "#00377B",
+    "colorSecundario": "#0099D8"
+  },
+  {
+    "id": "claro",
+    "nombre": "Claro Guatemala",
+    "logo": "/logos/claro.png",
+    "color": "#DA0000",
+    "colorSecundario": "#333333"
+  }
+]
