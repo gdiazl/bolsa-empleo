@@ -4,8 +4,7 @@
 TalentLink es una plataforma web tipo bolsa de empleo universitaria en formato MVP (Producto Mínimo Viable). Permite a empresas reclutadoras identificar y consultar los estudiantes más destacados de la Universidad Mariano Gálvez según su rendimiento académico, filtrando por perfil laboral.
 
 ## Características
-- Selección de empresa reclutadora (Pepsi, Coca-Cola, Cervecería Centroamericana, Tigo, Claro)
-- Filtrado de estudiantes por perfil laboral (Desarrollador Web, Soporte Técnico, Analista de Datos, Administrador de Redes, Desarrollador de Software, Especialista en Ciberseguridad)
+- Filtrado de estudiantes por perfil laboral (Desarrollador Web, Soporte Técnico, Analista de Datos, Administrador de Redes, Desarrollador de Software, Especialista en Ciberseguridad) según la necesidad de la empresa reclutadora (Coca-Cola).
 - Ranking automático de los 10 mejores estudiantes por perfil
 - Visualización de nombre y correo institucional del candidato
 
@@ -23,7 +22,6 @@ bolsa-empleo/
 ├── src/
 │   ├── components/
 │   │   ├── LandingEmpresa.vue    # Pantalla de selección de empresa
-│   │   └── BuscadorTalento.vue   # Vista de búsqueda y resultados
 │   ├── composables/
 │   │   └── useRanking.ts         # Lógica de filtrado y ranking
 │   ├── data/
