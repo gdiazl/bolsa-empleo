@@ -32,8 +32,8 @@
       <p>Consulta los estudiantes más destacados según el perfil que necesitas</p>
     </div>
 
-    <!-- Selector de perfil -->
-    <div class="selector-section">
+    <!-- Selector de perfil (se oculta al seleccionar uno) -->
+    <div class="selector-section" v-if="!perfilSeleccionado">
       <div class="selector-card">
         <label class="selector-label">Perfil laboral</label>
         <div class="perfiles-grid">
@@ -41,7 +41,6 @@
             v-for="perfil in perfiles"
             :key="perfil.id"
             class="perfil-btn"
-            :class="{ activo: perfilSeleccionado?.id === perfil.id }"
             @click="seleccionarPerfil(perfil)"
           >
             <span class="perfil-icono">{{ perfil.icono }}</span>
@@ -61,7 +60,9 @@
             <p>{{ perfilSeleccionado.nombre }} · {{ perfilSeleccionado.descripcion }}</p>
           </div>
         </div>
-        <div class="resultados-badge">{{ ranking.length }} candidatos</div>
+        <button class="btn-volver" @click="volverAPerfiles">
+          ← Cambiar perfil
+        </button>
       </div>
 
       <div v-if="ranking.length === 0" class="sin-resultados">
@@ -138,6 +139,11 @@ const ranking = ref<CandidatoRanking[]>([])
 function seleccionarPerfil(perfil: Perfil) {
   perfilSeleccionado.value = perfil
   ranking.value = calcularRanking(props.estudiantes, perfil)
+}
+
+function volverAPerfiles() {
+  perfilSeleccionado.value = null
+  ranking.value = []
 }
 
 function onImgError(e: Event) {

@@ -577,3 +577,26 @@ body {
   align-items: flex-start;
   justify-content: center;
 }
+
+/* Botón volver a perfiles */
+.btn-volver {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-volver:hover {
+  background: var(--surface-hover);
+  border-color: var(--empresa-color, #6c63ff);
+  transform: translateX(-4px);
+}
