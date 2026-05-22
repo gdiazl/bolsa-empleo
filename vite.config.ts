@@ -5,6 +5,7 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   test: {
     environment: "jsdom",
+    reporters: ["default"],
     globals: true,
   },
   plugins: [vue()],
