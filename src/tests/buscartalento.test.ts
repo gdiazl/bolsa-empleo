@@ -44,6 +44,13 @@ const ESTUDIANTES_MOCK: Estudiante[] = [
     curso: "BD101",
     calificacion: 99,
   },
+  {
+    id: 4,
+    nombre: "Carlos Méndez",
+    correo: "carlos@uni.gt",
+    curso: "PROG101",
+    calificacion: 80,
+  },
 ];
 
 describe("I1 · BuscadorTalento — flujo completo (RF-01 a RF-04, RF-08)", () => {
@@ -87,11 +94,9 @@ describe("I1 · BuscadorTalento — flujo completo (RF-01 a RF-04, RF-08)", () =
     });
     await wrapper.find(".perfil-btn").trigger("click");
 
-    // Ana (95) debe aparecer antes que Luis (88) en el DOM
-    const texto = wrapper.text();
-    expect(texto.indexOf("Ana López")).toBeLessThan(
-      texto.indexOf("Luis Pérez"),
-    );
+    // Ana (95) es el primer lugar, debe estar en el podio central (podio-1)
+    const podio1 = wrapper.find(".podio-item.podio-1");
+    expect(podio1.text()).toContain("Ana López");
   });
 
   it("mostrar correo institucional de cada candidato (RF-04)", async () => {
@@ -104,5 +109,22 @@ describe("I1 · BuscadorTalento — flujo completo (RF-01 a RF-04, RF-08)", () =
     });
     await wrapper.find(".perfil-btn").trigger("click");
     expect(wrapper.text()).toContain("ana@uni.gt");
+  });
+
+  it("el tiempo de respuesta al seleccionar un perfil es menor a 3 segundos (RNF-01)", async () => {
+    const wrapper = mount(BuscadorTalento, {
+      props: {
+        empresa: EMPRESA_MOCK,
+        perfiles: PERFILES_MOCK,
+        estudiantes: ESTUDIANTES_MOCK,
+      },
+    });
+
+    const inicio = performance.now();
+    await wrapper.find(".perfil-btn").trigger("click");
+    const fin = performance.now();
+
+    const tiempoMs = fin - inicio;
+    expect(tiempoMs).toBeLessThan(3000);
   });
 });
