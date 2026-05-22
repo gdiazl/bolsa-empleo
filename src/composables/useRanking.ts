@@ -1,33 +1,39 @@
-import type { Estudiante, Perfil, CandidatoRanking } from '../types'
+// src/composables/useRanking.ts
+import type { Estudiante, Perfil, CandidatoRanking } from "../types";
 
-export function calcularRanking(
+/** RF-02: filtra solo los registros cuyo curso pertenece al perfil */
+export function filtrarPorPerfil(
   estudiantes: Estudiante[],
-  perfil: Perfil
+  cursosDelPerfil: string[],
+): Estudiante[] {
+  return estudiantes.filter((e) => cursosDelPerfil.includes(e.curso));
+}
+
+/** Deduplica por correo, conservando la calificación más alta */
+export function agruparMejorCalificacion(
+  estudiantes: Estudiante[],
 ): CandidatoRanking[] {
-  const cursosDelPerfil = perfil.cursos
-
-  // Tomar la calificación más alta del estudiante en los cursos del perfil
-  const mapaEstudiantes = new Map<string, { nombre: string; correo: string; mejor: number }>()
-
+  const mapa = new Map<string, CandidatoRanking>();
   for (const est of estudiantes) {
-    if (!cursosDelPerfil.includes(est.curso)) continue
-
-    const key = est.correo
-    if (!mapaEstudiantes.has(key)) {
-      mapaEstudiantes.set(key, { nombre: est.nombre, correo: est.correo, mejor: est.calificacion })
-    } else {
-      const entry = mapaEstudiantes.get(key)!
-      if (est.calificacion > entry.mejor) entry.mejor = est.calificacion
+    const entry = mapa.get(est.correo);
+    if (!entry || est.calificacion > entry.promedio) {
+      mapa.set(est.correo, {
+        nombre: est.nombre,
+        correo: est.correo,
+        promedio: est.calificacion,
+      });
     }
   }
+  return Array.from(mapa.values());
+}
 
-  const ranking: CandidatoRanking[] = Array.from(mapaEstudiantes.values()).map(e => ({
-    nombre: e.nombre,
-    correo: e.correo,
-    promedio: e.mejor
-  }))
-
-  ranking.sort((a, b) => b.promedio - a.promedio)
-
-  return ranking.slice(0, 10)
+/** RF-03 + RF-04: orquesta filtrado, agrupación, orden y top 10 */
+export function calcularRanking(
+  estudiantes: Estudiante[],
+  perfil: Perfil,
+): CandidatoRanking[] {
+  const filtrados = filtrarPorPerfil(estudiantes, perfil.cursos);
+  const agrupados = agruparMejorCalificacion(filtrados);
+  agrupados.sort((a, b) => b.promedio - a.promedio);
+  return agrupados.slice(0, 10);
 }
