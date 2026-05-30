@@ -37,3 +37,4 @@ export function calcularRanking(
   agrupados.sort((a, b) => b.promedio - a.promedio);
   return agrupados.slice(0, 10);
 }
+
