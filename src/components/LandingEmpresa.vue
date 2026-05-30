@@ -1,14 +1,10 @@
 <template>
   <div class="landing">
-    <div class="landing-bg">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="orb orb-3"></div>
-    </div>
+    <div class="landing-bg"></div>
 
     <div class="landing-content">
       <div class="brand">
-        <div class="brand-icon">🎓</div>
+        <img src="/umg-logo.png" alt="UMG" class="brand-logo" />
         <h1 class="brand-name">TalentLink</h1>
         <p class="brand-tagline">Plataforma de Vinculación Laboral Universitaria</p>
       </div>
@@ -22,7 +18,6 @@
             v-for="empresa in empresas"
             :key="empresa.id"
             class="empresa-card"
-            :style="{ '--empresa-color': empresa.color }"
             @click="$emit('seleccionar', empresa)"
           >
             <div class="empresa-logo-wrap">
@@ -34,7 +29,12 @@
               />
             </div>
             <span class="empresa-nombre">{{ empresa.nombre }}</span>
-            <div class="empresa-arrow">→</div>
+            <div class="empresa-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
           </button>
         </div>
       </div>
